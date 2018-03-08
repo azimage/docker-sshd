@@ -14,8 +14,6 @@
 
 FROM ubuntu:16.04
 
-WORKDIR /root
-
 EXPOSE 22
 
 CMD [ "/usr/sbin/sshd", "-D" ]
