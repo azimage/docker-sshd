@@ -24,6 +24,7 @@ Start SSHD:
 
     # Run as detach
     docker run \
+        -itd \
         --name sshd \
         --publish 2222:22 \
         alvistack/docker-sshd

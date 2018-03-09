@@ -31,6 +31,8 @@ COPY files /
 
 # Ensure required folders exist with correct owner:group
 RUN set -ex \
+    && chown -Rf root:root /root /var/run/sshd \
+    && chmod 0755 /var/run/sshd \
     && chmod 0700 /root/.ssh \
     && chmod 0600 /root/.ssh/*
 
