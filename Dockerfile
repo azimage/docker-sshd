@@ -16,23 +16,31 @@ FROM ubuntu:16.04
 
 EXPOSE 22
 
-CMD [ "/usr/sbin/sshd", "-D" ]
+ENTRYPOINT [ "/usr/local/bin/dumb-init", "--" ]
+CMD        [ "/usr/sbin/sshd", "-D" ]
 
 # Prepare APT depedencies
 RUN set -ex \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractiev apt-get install -y openssh-server pwgen rsync \
-    && apt-get -y autoremove \
-    && apt-get -y autoclean \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl openssh-server pwgen rsync \
     && rm -rf /var/lib/apt/lists/*
+
+# Install dumb-init
+RUN set -ex \
+    && curl -skL https://github.com/Yelp/dumb-init/releases/download/v1.2.1/dumb-init_1.2.1_amd64 > /usr/local/bin/dumb-init \
+    && chmod 0755 /usr/local/bin/dumb-init
 
 # Copy files
 COPY files /
 
 # Ensure required folders exist with correct owner:group
 RUN set -ex \
-    && chown -Rf root:root /root /var/run/sshd \
+    && mkdir -p /var/run/sshd \
+    && chown root:root /var/run/sshd \
     && chmod 0755 /var/run/sshd \
+    && mkdir -p /root/.ssh \
+    && chown root:root /root/.ssh \
     && chmod 0700 /root/.ssh \
-    && chmod 0600 /root/.ssh/*
-
+    && touch /root/.ssh/authorized_keys \
+    && chown root:root /root/.ssh/authorized_keys \
+    && chmod 0600 /root/.ssh/authorized_keys
