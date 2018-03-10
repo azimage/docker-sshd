@@ -4,7 +4,7 @@ Docker Image Packaging for SSHD
 [![Travis](https://img.shields.io/travis/alvistack/docker-sshd.svg)](https://travis-ci.org/alvistack/docker-sshd)
 [![GitHub release](https://img.shields.io/github/release/alvistack/docker-sshd.svg)](https://github.com/alvistack/docker-sshd/releases)
 [![GitHub license](https://img.shields.io/github/license/alvistack/docker-sshd.svg)](https://github.com/alvistack/docker-sshd/blob/master/LICENSE)
-[![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/docker-sshd.svg)](https://hub.docker.com/r/alvistack/docker-sshd/)
+[![Docker Pulls](https://img.shields.io/docker/pulls/alvistack/sshd.svg)](https://hub.docker.com/r/alvistack/sshd/)
 
 OpenSSH is the premier connectivity tool for remote login with the SSH protocol. It encrypts all traffic to eliminate eavesdropping, connection hijacking, and other attacks. In addition, OpenSSH provides a large suite of secure tunneling capabilities, several authentication methods, and sophisticated configuration options.
 
@@ -20,14 +20,14 @@ This Docker container makes it easy to get an instance of SSHD up and running.
 Start SSHD:
 
     # Pull latest image
-    docker pull alvistack/docker-sshd
+    docker pull alvistack/sshd
 
     # Run as detach
     docker run \
         -itd \
         --name sshd \
         --publish 2222:22 \
-        alvistack/docker-sshd
+        alvistack/sshd
 
 **Success**. SSHD is now available on port `2222`.
 
@@ -51,7 +51,7 @@ Now you could SSH to it as normal:
 Versioning
 ----------
 
-The `latest` tag matches the most recent version of this repository. Thus using `alvistack/docker-sshd:latest` or `alvistack/docker-sshd` will ensure you are running the most up to date version of this image.
+The `latest` tag matches the most recent version of this repository. Thus using `alvistack/sshd:latest` or `alvistack/sshd` will ensure you are running the most up to date version of this image.
 
 License
 -------
