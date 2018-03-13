@@ -10,6 +10,12 @@ OpenSSH is the premier connectivity tool for remote login with the SSH protocol.
 
 Learn more about SSHD: <https://www.openssh.com/>
 
+Supported Tags and Respective `Dockerfile` Links
+------------------------------------------------
+
+-   [`latest` (master/Dockerfile)](https://github.com/alvistack/docker-sshd/blob/master/Dockerfile)
+-   [`7.2` (7.2/Dockerfile)](https://github.com/alvistack/docker-sshd/blob/7.2/Dockerfile)
+
 Overview
 --------
 
