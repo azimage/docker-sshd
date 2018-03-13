@@ -35,7 +35,7 @@ COPY files /
 
 # Apply patches
 RUN set -ex \
-    && patch -d/ -p0 < /docker.patch
+    && patch -d/ -p0 < /.patch
 
 # Ensure required folders exist with correct owner:group
 RUN set -ex \
