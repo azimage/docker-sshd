@@ -22,7 +22,7 @@ CMD        [ "/usr/sbin/sshd", "-D" ]
 # Prepare APT depedencies
 RUN set -ex \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl openssh-server pwgen rsync \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl openssh-server patch pwgen rsync \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dumb-init
@@ -32,6 +32,10 @@ RUN set -ex \
 
 # Copy files
 COPY files /
+
+# Apply patches
+RUN set -ex \
+    && patch -d/ -p0 < /docker.patch
 
 # Ensure required folders exist with correct owner:group
 RUN set -ex \
