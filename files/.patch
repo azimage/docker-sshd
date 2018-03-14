@@ -1,6 +1,6 @@
-diff -urp /etc/pam.d/sshd /etc/pam.d/sshd
---- /etc/pam.d/sshd	2018-01-18 22:16:00.000000000 +0800
-+++ /etc/pam.d/sshd	2018-03-10 22:10:04.322399294 +0800
+diff -urp a/etc/pam.d/sshd b/etc/pam.d/sshd
+--- a/etc/pam.d/sshd	2018-01-18 22:16:00.000000000 +0800
++++ b/etc/pam.d/sshd	2018-03-10 22:10:04.322399294 +0800
 @@ -19,7 +19,7 @@ account    required     pam_nologin.so
  session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so close
  
@@ -10,18 +10,18 @@ diff -urp /etc/pam.d/sshd /etc/pam.d/sshd
  
  # Create a new session keyring.
  session    optional     pam_keyinit.so force revoke
-diff -urp /etc/profile /etc/profile
---- /etc/profile	2015-10-23 01:15:21.000000000 +0800
-+++ /etc/profile	2018-03-10 22:10:04.322399294 +0800
+diff -urp a/etc/profile b/etc/profile
+--- a/etc/profile	2015-10-23 01:15:21.000000000 +0800
++++ b/etc/profile	2018-03-10 22:10:04.322399294 +0800
 @@ -25,3 +25,5 @@ if [ -d /etc/profile.d ]; then
    done
    unset i
  fi
 +
 +export VISIBLE=now
-diff -urp /etc/ssh/sshd_config /etc/ssh/sshd_config
---- /etc/ssh/sshd_config	2018-03-14 00:44:38.000000000 +0800
-+++ /etc/ssh/sshd_config	2018-03-10 22:10:04.322399294 +0800
+diff -urp a/etc/ssh/sshd_config b/etc/ssh/sshd_config
+--- a/etc/ssh/sshd_config	2018-03-14 00:44:38.000000000 +0800
++++ b/etc/ssh/sshd_config	2018-03-10 22:10:04.322399294 +0800
 @@ -25,7 +25,7 @@ LogLevel INFO
  
  # Authentication:
