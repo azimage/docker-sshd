@@ -17,7 +17,7 @@ FROM ubuntu:16.04
 EXPOSE 22
 
 ENTRYPOINT [ "dumb-init", "--" ]
-CMD        [ "sshd", "-D" ]
+CMD        [ "/usr/sbin/sshd", "-D" ]
 
 # Prepare APT depedencies
 RUN set -ex \
