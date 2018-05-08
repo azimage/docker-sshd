@@ -14,6 +14,12 @@
 
 FROM ubuntu:16.04
 
+ENV LANG   "en_US.UTF8"
+ENV LC_ALL "en_US.UTF8"
+ENV SHELL  "/bin/bash"
+
+WORKDIR "/root"
+
 EXPOSE 22
 
 ENTRYPOINT [ "dumb-init", "--" ]
@@ -22,7 +28,7 @@ CMD        [ "/usr/sbin/sshd", "-D" ]
 # Prepare APT depedencies
 RUN set -ex \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y curl openssh-server patch pwgen rsync \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y aptitude bash bash-completion bmon bzip2 colordiff curl dnsutils duplicity git git-flow htop inetutils-ping language-pack-en less nmap openssh-server patch psmisc python-minimal pwgen rsync screen telnet traceroute unzip vim wget zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dumb-init
@@ -36,6 +42,10 @@ COPY files /
 # Apply patches
 RUN set -ex \
     && patch -d/ -p1 < /.patch
+
+# Update default locale
+RUN set -ex \
+    && update-locale LC_ALL=en_US.UTF8 LANG=en_US.UTF8
 
 # Ensure required folders exist with correct owner:group
 RUN set -ex \
