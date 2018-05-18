@@ -28,7 +28,7 @@ CMD        [ "/usr/sbin/sshd", "-eD" ]
 # Prepare APT depedencies
 RUN set -ex \
     && apt-get update \
-    && DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https aptitude bash bash-completion bmon build-essential bzip2 ca-certificates colordiff curl debian-archive-keyring debian-keyring dnsutils duplicity git git-flow htop inetutils-ping language-pack-en less nmap openssh-server patch psmisc pwgen python-minimal python-software-properties rsync screen software-properties-common telnet traceroute unzip vim wget zip \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y apt-transport-https aptitude automake bash bash-completion bmon build-essential build-essential bzip2 ca-certificates colordiff curl debian-archive-keyring debian-keyring dnsutils duplicity git git-flow htop inetutils-ping language-pack-en less libtool nmap openssh-server patch psmisc pwgen python-minimal python-software-properties rsync screen software-properties-common telnet traceroute unzip vim wget zip \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dumb-init
